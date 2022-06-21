@@ -777,6 +777,17 @@ func (e *Element) ChildProcInsts() []*ProcInst {
 	return procinsts
 }
 
+// ChildDirectives returns all directives that are children of this element.
+func (e *Element) ChildDirectives() []*Directive {
+	var comments []*Directive
+	for _, t := range e.Child {
+		if c, ok := t.(*Directive); ok {
+			comments = append(comments, c)
+		}
+	}
+	return comments
+}
+
 // ChildElements returns all elements that are children of this element.
 func (e *Element) ChildElements() []*Element {
 	var elements []*Element
@@ -786,6 +797,18 @@ func (e *Element) ChildElements() []*Element {
 		}
 	}
 	return elements
+}
+
+// SelectDirective returns the xml directive.
+// The function returns nil if no xml directive
+// matching the target is found.
+func (e *Element) SelectDirective() *Directive {
+	for _, t := range e.Child {
+		if c, ok := t.(*Directive); ok {
+			return c
+		}
+	}
+	return nil
 }
 
 // SelectElement returns the first child element with the given 'tag' (i.e.,
