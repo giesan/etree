@@ -766,6 +766,17 @@ func (e *Element) SelectAttrValue(key, dflt string) string {
 	return dflt
 }
 
+// ChildComments returns all comments that are children of this element.
+func (e *Element) ChildComments() []*Comment {
+	var comments []*Comment
+	for _, t := range e.Child {
+		if c, ok := t.(*Comment); ok {
+			comments = append(comments, c)
+		}
+	}
+	return comments
+}
+
 // ChildProcInsts returns all processing instructions that are children of this element.
 func (e *Element) ChildProcInsts() []*ProcInst {
 	var procinsts []*ProcInst
