@@ -777,17 +777,6 @@ func (e *Element) ChildComments() []*Comment {
 	return comments
 }
 
-// ChildProcInsts returns all processing instructions that are children of this element.
-func (e *Element) ChildProcInsts() []*ProcInst {
-	var procinsts []*ProcInst
-	for _, t := range e.Child {
-		if c, ok := t.(*ProcInst); ok {
-			procinsts = append(procinsts, c)
-		}
-	}
-	return procinsts
-}
-
 // ChildDirectives returns all directives that are children of this element.
 func (e *Element) ChildDirectives() []*Directive {
 	var comments []*Directive
@@ -808,6 +797,17 @@ func (e *Element) ChildElements() []*Element {
 		}
 	}
 	return elements
+}
+
+// ChildProcInsts returns all processing instructions that are children of this element.
+func (e *Element) ChildProcInsts() []*ProcInst {
+	var procinsts []*ProcInst
+	for _, t := range e.Child {
+		if c, ok := t.(*ProcInst); ok {
+			procinsts = append(procinsts, c)
+		}
+	}
+	return procinsts
 }
 
 // SelectDirective returns the xml directive.
