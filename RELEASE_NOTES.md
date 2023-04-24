@@ -1,3 +1,13 @@
+Release v1.1.1
+==============
+
+**New Features**
+
+* Additional support for processing instructions, comments, and directives.
+  * Added `Element.SelectProcInst`, `Element.SelectProcInsts` and `Element.ChildProcInsts` methods
+  * Added `Element.ChildComments` method
+  * Added `Element.ChildDirectives` and `Element.SelectDirective` methods
+
 Release v1.1.0
 ==============
 
