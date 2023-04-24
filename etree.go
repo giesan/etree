@@ -779,13 +779,13 @@ func (e *Element) ChildProcInsts() []*ProcInst {
 
 // ChildDirectives returns all directives that are children of this element.
 func (e *Element) ChildDirectives() []*Directive {
-	var comments []*Directive
+	var directives []*Directive
 	for _, t := range e.Child {
 		if c, ok := t.(*Directive); ok {
-			comments = append(comments, c)
+			directives = append(directives, c)
 		}
 	}
-	return comments
+	return directives
 }
 
 // ChildElements returns all elements that are children of this element.
